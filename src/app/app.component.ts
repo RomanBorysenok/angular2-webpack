@@ -7,6 +7,9 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { AppState } from './app.service';
+import { Store } from '@ngrx/store';
+
+import * as fromRoot from './reducers';
 
 /*
  * App Component
@@ -64,7 +67,8 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
+    public appState: AppState,
+    private store: Store<fromRoot.State>
   ) {}
 
   public ngOnInit() {

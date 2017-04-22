@@ -9,13 +9,17 @@ import { bootloader } from '@angularclass/hmr';
  * our top level module that holds all of our components
  */
 import { AppModule } from './app';
+import { provideStore } from '@ngrx/store';
+import { test } from './reducers';
 
 /*
  * Bootstrap our Angular app with a top level NgModule
  */
 export function main(): Promise<any> {
   return platformBrowserDynamic()
-    .bootstrapModule(AppModule)
+    .bootstrapModule(AppModule, [
+      provideStore({test})
+    ])
     .then(decorateModuleRef)
     .catch((err) => console.error(err));
 }
